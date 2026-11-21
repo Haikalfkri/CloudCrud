@@ -1,0 +1,1060 @@
+# CloudCRUD
+## End-to-End Backend Development & DevOps Project
+
+**Project Type:** Backend Engineering + DevOps  
+**Backend:** Python + Django + Django REST Framework  
+**Database:** PostgreSQL  
+**Cache:** Redis  
+**Application Server:** Gunicorn  
+**Reverse Proxy:** Nginx  
+**Containerization:** Docker & Docker Compose  
+**CI/CD:** GitHub Actions  
+**Container Registry:** Google Artifact Registry  
+**Orchestration:** Kubernetes  
+**Package Manager:** Helm  
+**Infrastructure as Code:** Terraform  
+**Cloud Provider:** Google Cloud Platform (GCP)  
+**Monitoring:** Prometheus + Grafana  
+**Observability:** OpenTelemetry  
+
+---
+
+# 1. Project Overview
+
+CloudCRUD is a learning-oriented project designed to practice the complete lifecycle of a backend application, from initial development to production deployment.
+
+The application will be a simple Product Management REST API built using Django REST Framework.
+
+The main learning objective is not building a complex application, but understanding how backend applications are developed, containerized, automated, deployed, monitored, secured, and maintained.
+
+## Main Objectives
+
+- Build a RESTful API using Django REST Framework.
+- Integrate PostgreSQL as the primary database.
+- Implement Redis caching.
+- Use Gunicorn as the production WSGI application server.
+- Configure Nginx as a reverse proxy.
+- Containerize the application using Docker.
+- Orchestrate local services using Docker Compose.
+- Automate testing and builds using GitHub Actions.
+- Deploy the application using Kubernetes.
+- Manage Kubernetes applications using Helm.
+- Provision infrastructure using Terraform.
+- Deploy the application to Google Cloud Platform.
+- Implement automated CI/CD pipelines.
+- Monitor application and infrastructure health.
+
+# 2. Application Scope
+
+Keep the application simple. Focus on infrastructure and deployment rather than adding unnecessary business features.
+
+## Product Management API
+
+### Product Entity
+
+| Field | Type |
+|---|---|
+| id | UUID |
+| name | String |
+| description | Text |
+| price | Decimal |
+| stock | Integer |
+| created_at | DateTime |
+| updated_at | DateTime |
+
+### API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | /api/products/ | Get all products |
+| GET | /api/products/{id}/ | Get product by ID |
+| POST | /api/products/ | Create product |
+| PUT | /api/products/{id}/ | Update product |
+| DELETE | /api/products/{id}/ | Delete product |
+
+Additional endpoints:
+
+- GET /health/
+- GET /health/ready/
+- GET /health/live/
+
+## Technical Requirements
+
+- Django project and app structure.
+- Django REST Framework.
+- Django ORM.
+- Serializers.
+- Model validation.
+- ViewSets and API routing.
+- Environment-based settings.
+- PostgreSQL integration.
+- Database migrations.
+- Global exception handling where appropriate.
+- Structured logging.
+- Unit and integration testing with pytest.
+- API documentation using drf-spectacular or an equivalent OpenAPI tool.
+
+---
+
+# 3. Learning Methodology
+
+Every phase MUST follow this workflow.
+
+## STEP 1 — LEARN FIRST
+
+Before implementing a technology, watch tutorials and understand its fundamentals.
+
+Activities:
+- Watch relevant tutorials.
+- Read official documentation.
+- Understand the architecture and purpose.
+- Learn important commands.
+- Understand configuration files.
+- Take notes.
+
+## STEP 2 — IMPLEMENT
+
+After learning, implement the technology independently in CloudCRUD.
+
+Activities:
+- Configure the technology.
+- Integrate it with the existing project.
+- Test the implementation.
+- Troubleshoot errors.
+- Document what you learned.
+
+## STEP 3 — VERIFY
+
+Before moving to the next phase:
+
+- Make sure everything works.
+- Understand the configuration.
+- Be able to explain why the technology is used.
+- Commit the changes to GitHub.
+
+**Important:** Don't simply copy commands from tutorials. Try to understand and reproduce the implementation yourself.
+
+---
+
+# 4. Project Implementation Phases
+
+## PHASE 0 — Project Initialization & Planning
+
+**Objective:** Prepare the project structure, requirements, architecture, and development environment.
+
+### Learn First
+
+- Python virtual environments.
+- Python package management.
+- Git and GitHub fundamentals.
+- Git branching and commits.
+- Django fundamentals.
+- REST API fundamentals.
+- Basic system architecture.
+
+### Implement
+
+1. Create a GitHub repository named CloudCRUD.
+2. Create the local project directory.
+3. Initialize Git.
+4. Create a Python virtual environment.
+5. Install Django and Django REST Framework.
+6. Create the Django project.
+7. Create the products application.
+8. Define Product fields and API endpoints.
+9. Create project documentation.
+10. Create a basic architecture diagram.
+
+### Initial Structure
+
+```text
+CloudCRUD/
+├── config/
+├── products/
+├── tests/
+├── docs/
+├── docker/
+├── nginx/
+├── kubernetes/
+├── helm/
+├── terraform/
+├── monitoring/
+├── .github/
+├── manage.py
+├── requirements.txt
+├── .env.example
+├── .gitignore
+└── README.md
+```
+
+### Deliverables
+
+- GitHub repository.
+- Initial Django project.
+- Project requirements.
+- Architecture documentation.
+- Development environment ready.
+
+---
+
+## PHASE 1 — Backend API Development
+
+**Objective:** Build a fully functional CRUD API before introducing DevOps tools.
+
+### Learn First
+
+- Django project and app structure.
+- Django REST Framework.
+- Django models.
+- Django ORM.
+- Serializers.
+- Function-based views vs class-based views.
+- ViewSets and routers.
+- URL routing.
+- Django migrations.
+- Django settings management.
+- Dependency management.
+- pytest and pytest-django.
+- Unit and integration testing.
+
+### Implement
+
+1. Configure the Django project.
+2. Create the products application.
+3. Configure Django REST Framework.
+4. Create the Product model.
+5. Implement serializers.
+6. Implement CRUD operations using ModelViewSet.
+7. Configure API routing.
+8. Configure PostgreSQL.
+9. Create and run database migrations.
+10. Implement request validation.
+11. Configure consistent API error responses.
+12. Configure OpenAPI documentation.
+13. Write unit and integration tests.
+14. Create health check endpoints.
+
+### Deliverables
+
+- Working Django REST Framework CRUD API.
+- Product model.
+- PostgreSQL integration.
+- Database migrations.
+- API documentation.
+- Automated tests.
+
+### Verification
+
+- Test all CRUD endpoints.
+- Verify database persistence.
+- Test invalid requests.
+- Test error responses.
+- Run automated tests successfully.
+
+---
+
+## PHASE 2 — Docker & Containerization
+
+**Objective:** Understand containerization and run Django inside Docker.
+
+### Learn First
+
+- Containerization fundamentals.
+- Docker architecture.
+- Docker Engine.
+- Docker Images.
+- Docker Containers.
+- Dockerfile.
+- Docker layers and caching.
+- Docker volumes.
+- Docker networks.
+- Environment variables.
+- Multi-stage Docker builds.
+- Python dependencies inside containers.
+
+### Implement
+
+1. Install Docker Desktop.
+2. Create a Dockerfile for Django.
+3. Configure Python dependencies.
+4. Configure the application working directory.
+5. Build the Docker image.
+6. Run the Django container.
+7. Configure environment variables.
+8. Configure container ports.
+9. Configure Docker networking.
+10. Test the API inside Docker.
+
+### Deliverables
+
+- Dockerfile.
+- Working Django container.
+- Documented Docker commands.
+
+### Verification
+
+- Build the image successfully.
+- Run the API container.
+- Access the API through the exposed port.
+- Verify that the application starts correctly.
+
+---
+
+## PHASE 3 — Docker Compose, PostgreSQL & Redis
+
+**Objective:** Orchestrate multiple application services using Docker Compose.
+
+### Learn First
+
+- Docker Compose fundamentals.
+- Compose YAML structure.
+- Services.
+- Networks.
+- Named volumes.
+- Environment configuration.
+- Service dependencies.
+- Health checks.
+- Container restart policies.
+- PostgreSQL fundamentals.
+- Redis fundamentals.
+- Cache-aside pattern.
+- Cache invalidation.
+- Django cache framework.
+
+### Implement
+
+Create the following services:
+
+1. Django API.
+2. PostgreSQL.
+3. Redis.
+
+Configure:
+
+- Django container.
+- PostgreSQL container.
+- Redis container.
+- Persistent PostgreSQL volume.
+- Internal Docker network.
+- Environment variables.
+- Health checks.
+- Service dependencies.
+
+Then implement Redis caching:
+
+- Cache GET /api/products/.
+- Cache GET /api/products/{id}/.
+- Invalidate relevant cache entries after POST, PUT, and DELETE.
+
+Use Django's cache framework with Redis as the cache backend.
+
+### Deliverables
+
+- docker-compose.yml.
+- PostgreSQL container.
+- Redis container.
+- Django connected to both services.
+- Working Redis caching.
+
+### Verification
+
+Run the entire application using:
+
+```bash
+docker compose up -d
+```
+
+Check:
+
+```bash
+docker compose ps
+docker compose logs
+docker compose down
+```
+
+Verify that PostgreSQL data persists after restarting containers.
+
+---
+
+## PHASE 4 — Gunicorn & Nginx Reverse Proxy
+
+**Objective:** Understand how production Django applications serve requests through Gunicorn and Nginx.
+
+### Learn First
+
+**Gunicorn:**
+- WSGI fundamentals.
+- Development server vs production server.
+- Gunicorn architecture.
+- Workers and worker processes.
+- Binding and ports.
+- Application startup configuration.
+
+**Nginx:**
+- Reverse proxy fundamentals.
+- Forward proxy vs reverse proxy.
+- Nginx architecture.
+- Nginx configuration.
+- HTTP request forwarding.
+- Upstream servers.
+- Proxy headers.
+- Load balancing fundamentals.
+- TLS/SSL.
+- HTTP vs HTTPS.
+
+### Implement
+
+1. Install Gunicorn as a project dependency.
+2. Configure Gunicorn to serve Django.
+3. Create an Nginx configuration file.
+4. Configure Nginx as a reverse proxy.
+5. Connect Nginx to the Django container.
+6. Configure proxy headers.
+7. Configure request size limits.
+8. Configure static file handling if needed.
+9. Test request forwarding.
+10. Explore basic load balancing using multiple application instances.
+
+### Expected Architecture
+
+```text
+Client
+  |
+  v
+Nginx Reverse Proxy
+  |
+  v
+Gunicorn
+  |
+  v
+Django REST Framework
+  |
+  +---- PostgreSQL
+  |
+  +---- Redis
+```
+
+### Deliverables
+
+- Gunicorn configuration.
+- nginx.conf.
+- Nginx container.
+- Updated Docker Compose.
+- Working reverse proxy.
+
+### Verification
+
+Access the API through Nginx rather than exposing Gunicorn directly to the host.
+
+Example:
+
+```text
+http://localhost/api/products/
+```
+
+---
+
+## PHASE 5 — CI Pipeline with GitHub Actions
+
+**Objective:** Automate application building and testing.
+
+### Learn First
+
+- CI/CD fundamentals.
+- Continuous Integration.
+- GitHub Actions.
+- Workflow YAML.
+- Events and triggers.
+- Jobs and steps.
+- Runners.
+- GitHub Secrets.
+- Automated testing.
+- Docker image building.
+- Container registries.
+
+### Implement
+
+Create a GitHub Actions workflow.
+
+Pipeline:
+
+```text
+Git Push
+   |
+   v
+GitHub Actions
+   |
+   v
+Install Dependencies
+   |
+   v
+Run Django Checks
+   |
+   v
+Run Tests
+   |
+   v
+Build Docker Image
+   |
+   v
+Push Image to Registry
+```
+
+Use Google Artifact Registry as the intended image registry for cloud deployment.
+
+### Deliverables
+
+- CI workflow YAML.
+- Automated Django checks.
+- Automated tests.
+- Docker image publishing.
+
+### Verification
+
+Push a commit and verify that the workflow runs automatically.
+
+---
+
+## PHASE 6 — Kubernetes Fundamentals & Local Deployment
+
+**Objective:** Learn container orchestration and deploy CloudCRUD to a local Kubernetes cluster.
+
+### Learn First
+
+- Kubernetes architecture.
+- Control plane.
+- Worker nodes.
+- API Server.
+- Scheduler.
+- Kubelet.
+- Pods.
+- Deployments.
+- ReplicaSets.
+- Services.
+- ConfigMaps.
+- Secrets.
+- Namespaces.
+- Persistent Volumes.
+- Persistent Volume Claims.
+- Liveness probes.
+- Readiness probes.
+- Resource requests and limits.
+- Ingress and Gateway API fundamentals.
+
+### Tools
+
+- kubectl.
+- Minikube or Kind.
+- Kubernetes Dashboard (optional).
+
+### Implement
+
+1. Install Minikube or Kind.
+2. Create a local Kubernetes cluster.
+3. Configure the Kubernetes namespace.
+4. Create Django Deployment.
+5. Create Django Service.
+6. Configure ConfigMaps.
+7. Configure Secrets.
+8. Deploy PostgreSQL.
+9. Deploy Redis.
+10. Configure persistent storage.
+11. Configure health probes.
+12. Configure resource limits.
+13. Test scaling with multiple Django replicas.
+
+### Deliverables
+
+```text
+kubernetes/
+├── base/
+│   ├── namespace.yaml
+│   ├── django-deployment.yaml
+│   ├── django-service.yaml
+│   ├── postgres.yaml
+│   ├── redis.yaml
+│   ├── configmap.yaml
+│   └── secret.yaml
+└── overlays/
+    ├── development/
+    └── production/
+```
+
+### Nginx Integration
+
+Explore Nginx as an entry point for Kubernetes traffic.
+
+Learn:
+
+- Kubernetes Ingress concepts.
+- Gateway API concepts.
+- Nginx Gateway Fabric or another maintained Nginx-based integration.
+- TLS termination.
+
+### Verification
+
+- Django runs inside Kubernetes.
+- PostgreSQL and Redis are reachable.
+- Django can scale to multiple replicas.
+- Health probes work.
+- Persistent data survives pod restarts.
+
+---
+
+## PHASE 7 — Helm
+
+**Objective:** Package and manage Kubernetes application deployments.
+
+### Learn First
+
+- Helm fundamentals.
+- Helm Charts.
+- Chart structure.
+- Chart.yaml.
+- values.yaml.
+- Templates.
+- Helm releases.
+- Helm install.
+- Helm upgrade.
+- Helm rollback.
+- Environment-specific values.
+
+### Implement
+
+1. Create a Helm Chart.
+2. Move Kubernetes manifests into templates.
+3. Create configurable values.
+4. Configure development values.
+5. Configure production values.
+6. Deploy CloudCRUD using Helm.
+7. Practice upgrading releases.
+8. Practice rolling back releases.
+
+### Deliverables
+
+```text
+helm/
+└── cloudcrud/
+    ├── Chart.yaml
+    ├── values.yaml
+    ├── values-dev.yaml
+    ├── values-prod.yaml
+    └── templates/
+        ├── deployment.yaml
+        ├── service.yaml
+        ├── configmap.yaml
+        ├── secret.yaml
+        └── ingress.yaml
+```
+
+### Verification
+
+Deploy the application using Helm rather than manually applying every Kubernetes YAML file.
+
+---
+
+## PHASE 8 — Infrastructure as Code with Terraform
+
+**Objective:** Learn to provision and manage cloud infrastructure using code.
+
+### Learn First
+
+- Infrastructure as Code.
+- Terraform architecture.
+- Terraform providers.
+- Resources.
+- Data sources.
+- Variables.
+- Outputs.
+- State files.
+- Terraform modules.
+- Terraform plan.
+- Terraform apply.
+- Terraform destroy.
+- Remote state.
+- Dependency management.
+
+### Implement
+
+1. Install Terraform.
+2. Configure the Google Cloud provider.
+3. Configure project variables.
+4. Create Terraform modules.
+5. Define networking resources.
+6. Configure IAM permissions.
+7. Provision required infrastructure.
+8. Configure state management.
+9. Practice plan, apply, and destroy.
+
+### Deliverables
+
+```text
+terraform/
+├── modules/
+│   ├── networking/
+│   ├── kubernetes/
+│   └── registry/
+└── environments/
+    └── dev/
+        ├── main.tf
+        ├── variables.tf
+        ├── outputs.tf
+        └── terraform.tfvars
+```
+
+### Verification
+
+Provision and destroy infrastructure through Terraform.
+
+Never commit Terraform state files, credentials, or sensitive variables to GitHub.
+
+---
+
+## PHASE 9 — Google Cloud Platform Deployment
+
+**Objective:** Deploy CloudCRUD to an actual cloud environment.
+
+### Learn First
+
+- GCP fundamentals.
+- Google Cloud IAM.
+- Google Cloud networking.
+- VPC.
+- Subnets.
+- Firewall rules.
+- Google Kubernetes Engine.
+- Google Artifact Registry.
+- Cloud SQL.
+- Secret Manager.
+- Cloud billing and quotas.
+
+### Implement
+
+1. Create or configure a GCP project.
+2. Enable required APIs.
+3. Configure IAM.
+4. Configure VPC networking.
+5. Provision GKE using Terraform.
+6. Create Artifact Registry.
+7. Push Docker images.
+8. Configure Kubernetes access.
+9. Deploy Django using Helm.
+10. Configure Nginx-based ingress/gateway.
+11. Configure application secrets.
+12. Test the public API endpoint.
+
+### Database Architecture
+
+For learning:
+
+- PostgreSQL can run in Kubernetes.
+
+For a more production-oriented cloud deployment:
+
+- Consider Cloud SQL for managed PostgreSQL.
+- Use a managed Redis service if appropriate and affordable.
+
+### Deliverables
+
+- GCP infrastructure.
+- GKE cluster.
+- Artifact Registry.
+- Cloud deployment.
+- Public API endpoint.
+
+### Verification
+
+Access CloudCRUD through its cloud endpoint and test all CRUD operations.
+
+**Cost Warning:** GKE, compute, storage, networking, and managed databases can generate charges. Check pricing, configure billing alerts, and destroy resources when not needed.
+
+---
+
+## PHASE 10 — Continuous Deployment (CD)
+
+**Objective:** Automate deployment after successful CI.
+
+### Learn First
+
+- Continuous Deployment.
+- Deployment workflows.
+- GitHub Actions environments.
+- Workload Identity Federation.
+- GCP authentication.
+- Kubernetes deployment automation.
+- Helm upgrade.
+- Deployment strategies.
+- Rollback strategies.
+
+### Implement
+
+Create a CD workflow.
+
+```text
+Git Push / Release
+       |
+       v
+GitHub Actions
+       |
+       v
+Run CI Pipeline
+       |
+       v
+Build Docker Image
+       |
+       v
+Push to Artifact Registry
+       |
+       v
+Authenticate with GCP
+       |
+       v
+Connect to GKE
+       |
+       v
+Helm Upgrade
+       |
+       v
+Deployment Verification
+       |
+       v
+Application Running
+```
+
+Configure:
+
+- Automated image publishing.
+- Immutable image tags.
+- GitHub Actions environments.
+- Workload Identity Federation.
+- Helm deployment.
+- Rollout verification.
+- Rollback strategy.
+
+### Deliverables
+
+- CI workflow.
+- CD workflow.
+- Automated deployment.
+- Deployment verification.
+
+### Verification
+
+Push a change to the API and verify that the updated version is deployed automatically.
+
+---
+
+## PHASE 11 — Monitoring & Observability
+
+**Objective:** Understand application health, performance, and infrastructure behavior in production.
+
+### Learn First
+
+- Monitoring fundamentals.
+- Observability fundamentals.
+- Metrics.
+- Logs.
+- Distributed tracing.
+- Prometheus.
+- Grafana.
+- OpenTelemetry.
+- Alerting.
+- Kubernetes monitoring.
+
+### Implement
+
+**Prometheus**
+
+- Collect application metrics.
+- Collect Kubernetes metrics.
+- Monitor API health.
+- Monitor resource utilization.
+
+**Grafana**
+
+- Create dashboards.
+- Visualize API requests.
+- Monitor response times.
+- Monitor error rates.
+- Monitor CPU and memory.
+
+**OpenTelemetry**
+
+- Instrument Django.
+- Instrument supported HTTP and database operations.
+- Collect traces.
+- Track request execution.
+- Understand service dependencies.
+
+**Logging**
+
+- Configure structured logging.
+- Collect application logs.
+- Centralize logs if required.
+
+**Alerting**
+
+- API availability.
+- High error rates.
+- High latency.
+- Resource utilization.
+- Failed deployments.
+
+### Deliverables
+
+- Prometheus configuration.
+- Grafana dashboards.
+- OpenTelemetry instrumentation.
+- Monitoring documentation.
+- Alert rules.
+
+### Verification
+
+Simulate API errors and increased load. Observe the metrics, logs, and traces.
+
+---
+
+## PHASE 12 — Security & Production Hardening
+
+**Objective:** Improve the security and reliability of the application.
+
+### Learn First
+
+- OWASP API Security Top 10.
+- Django security fundamentals.
+- Container security.
+- Least privilege.
+- IAM.
+- Kubernetes security.
+- Secrets management.
+- TLS/SSL.
+- Dependency vulnerability scanning.
+- Image scanning.
+- Backup and recovery.
+
+### Implement
+
+- Configure HTTPS.
+- Configure Django production settings.
+- Set DEBUG=False.
+- Configure ALLOWED_HOSTS.
+- Configure trusted origins where needed.
+- Secure environment variables.
+- Use GCP Secret Manager.
+- Configure least-privilege IAM.
+- Scan Docker images.
+- Scan Python dependencies.
+- Avoid running containers as root.
+- Configure resource limits.
+- Configure database backups.
+- Test database recovery.
+- Review network exposure.
+
+### Deliverables
+
+- Security configuration.
+- Vulnerability scanning.
+- Backup and recovery procedure.
+- Production-readiness checklist.
+
+---
+
+## PHASE 13 — Final Documentation & Portfolio
+
+**Objective:** Make CloudCRUD understandable, reproducible, and presentable as a professional engineering portfolio.
+
+### Implement
+
+1. Write a complete README.
+2. Document the architecture.
+3. Document local setup.
+4. Document Docker commands.
+5. Document Kubernetes deployment.
+6. Document Terraform provisioning.
+7. Document GCP deployment.
+8. Document CI/CD pipelines.
+9. Add architecture diagrams.
+10. Add monitoring dashboard screenshots.
+11. Document common troubleshooting steps.
+12. Record lessons learned.
+
+### Final Deliverables
+
+- Complete GitHub repository.
+- Working Django REST API.
+- Dockerized application.
+- Kubernetes deployment.
+- Helm Chart.
+- Terraform infrastructure.
+- GCP deployment.
+- Automated CI/CD.
+- Monitoring dashboards.
+- Technical documentation.
+
+---
+
+# 5. Final Technology Stack
+
+| Category | Technology |
+|---|---|
+| Language | Python |
+| Backend Framework | Django |
+| API Framework | Django REST Framework |
+| Application Server | Gunicorn |
+| Database | PostgreSQL |
+| Cache | Redis |
+| Reverse Proxy | Nginx |
+| Containerization | Docker |
+| Local Orchestration | Docker Compose |
+| CI/CD | GitHub Actions |
+| Registry | Google Artifact Registry |
+| Orchestration | Kubernetes |
+| Local Kubernetes | Kind / Minikube |
+| Package Management | Helm |
+| IaC | Terraform |
+| Cloud | Google Cloud Platform |
+| Container Platform | Google Kubernetes Engine |
+| Managed Database | Cloud SQL (optional) |
+| Metrics | Prometheus |
+| Dashboard | Grafana |
+| Observability | OpenTelemetry |
+| Security | Secret Manager, IAM, TLS |
+
+# 6. Project Success Criteria
+
+- [ ] Django REST Framework CRUD API works correctly.
+- [ ] PostgreSQL persists data.
+- [ ] Redis caching works.
+- [ ] Gunicorn serves Django.
+- [ ] Nginx forwards requests to Gunicorn.
+- [ ] Docker Compose runs all local services.
+- [ ] GitHub Actions automatically builds and tests the application.
+- [ ] Docker images are published to a registry.
+- [ ] Kubernetes runs the application successfully.
+- [ ] Helm manages application deployments.
+- [ ] Terraform provisions cloud infrastructure.
+- [ ] CloudCRUD is deployed to GCP.
+- [ ] CD automatically deploys new application versions.
+- [ ] Prometheus and Grafana monitor the application.
+- [ ] OpenTelemetry collects traces.
+- [ ] Security and backup procedures are documented.
+- [ ] README explains how to reproduce the project.
+
+---
+
+# 7. Learning Rules
+
+1. Learn the technology before implementing it.
+2. Use official documentation alongside video tutorials.
+3. Implement everything yourself after watching.
+4. Don't skip verification.
+5. Understand every configuration file.
+6. Don't introduce unnecessary complexity into the CRUD API.
+7. Don't move to the next phase until you understand the current phase.
+8. Document problems and how you solved them.
+9. Commit your work regularly.
+10. Prioritize understanding over speed.
+
+**Final Goal:**
+
+Become a Backend Engineer who understands the complete application lifecycle — from writing Python/Django backend code to deploying, monitoring, securing, and maintaining applications in production.

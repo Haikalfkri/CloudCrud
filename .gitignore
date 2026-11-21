@@ -1,0 +1,145 @@
+# =============================================================================
+# CloudCRUD .gitignore
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Python
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+.eggs/
+build/
+dist/
+wheels/
+pip-wheel-metadata/
+pip-log.txt
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# -----------------------------------------------------------------------------
+# Django
+# -----------------------------------------------------------------------------
+db.sqlite3
+db.sqlite3-journal
+*.log
+local_settings.py
+media/
+staticfiles/
+static_root/
+
+# -----------------------------------------------------------------------------
+# Environment variables and secrets
+# Commit only the template: .env.example
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.csr
+
+# GCP credentials
+*-credentials.json
+service-account*.json
+gcp-key*.json
+application_default_credentials.json
+
+# -----------------------------------------------------------------------------
+# Testing and coverage
+# -----------------------------------------------------------------------------
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+# -----------------------------------------------------------------------------
+# Type checking and linting caches
+# -----------------------------------------------------------------------------
+.mypy_cache/
+.ruff_cache/
+.pytype/
+
+# -----------------------------------------------------------------------------
+# Docker
+# -----------------------------------------------------------------------------
+docker-compose.override.yml
+.docker/
+
+# -----------------------------------------------------------------------------
+# Terraform
+# Never commit state, plans, or real variable values
+# -----------------------------------------------------------------------------
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfplan
+tfplan
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Keep example variable files and the dependency lock file
+!*.tfvars.example
+!.terraform.lock.hcl
+
+# -----------------------------------------------------------------------------
+# Kubernetes and Helm
+# Commit placeholder secrets only (e.g. secret.example.yaml)
+# -----------------------------------------------------------------------------
+kubernetes/**/secret.yaml
+kubernetes/**/secrets.yaml
+kubernetes/**/*-secret.yaml
+helm/**/values-secret*.yaml
+helm/**/*.tgz
+helm/**/charts/*.tgz
+*.kubeconfig
+kubeconfig
+
+# -----------------------------------------------------------------------------
+# IDEs and editors
+# -----------------------------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# -----------------------------------------------------------------------------
+# Operating system files
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -----------------------------------------------------------------------------
+# Misc
+# -----------------------------------------------------------------------------
+*.bak
+*.tmp
+tmp/
